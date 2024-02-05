@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zachary Berling Portfolio</title>
+  <meta name="description" content="Portfolio of Zachary Berling">
+  <meta name="author" content="Zachary Berling">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/42ef7bde51.js" crossorigin="anonymous"></script>
+  <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+  <!-- Contentful CMS -->
+  <script src="https://cdn.jsdelivr.net/npm/contentful@7.0.5/dist/contentful.browser.min.js" charset="utf-8"></script>
+  <script>
+    var exports = {}; 
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@contentful/rich-text-html-renderer@12.0.0/dist/rich-text-html-renderer.es5.min.js" charset="utf-8"></script>
+  <link rel="icon" type="image/png" href="./images/favicon.ico">
+</head>
+<body>  
+  <header>
+    <div class="logo"><a href="./index.html"><img src="./images/LogoSmall.png" alt="Berling"></a></div>
+    
+    <!-- Trigger Button for Modal -->
+    <button id="connectButton" class="connect-buttonII">Let's Connect</button>
+
+    <!-- Modal -->
+    <div id="connectModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Contact Form</h2>
+
+        <!-- Form inside the modal -->
+        <form action="https://formspree.io/f/myyqqbez" method="post">
+          <input type="text" name="name" placeholder="Enter your name">
+          <input type="email" name="_replyto" placeholder="Enter your email">
+          <textarea name="message" placeholder="Write your message here"></textarea>
+          <!-- Hidden input to let Formspree know where to redirect after submission -->
+          <input type="hidden" name="_next" value="http://yourwebsite.com/thanks.html">
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggler">
+      <div class="hamburger"><div></div></div>
+      <div class="menu">
+        <div>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./portfolio.html">Portfolio</a><li>
+            <li><a href="./resume.html">Resume</a></li>
+            <li><a href="./Contact.html">Contact</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="blog-content"></div>
+    <div class="blog-list">
+      <!-- Blog Article Modal Structure -->
+      <div id="blogModal" class="modal"> 
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="blog-article-content"></div> 
+        </div>
+      </div>
+    </div>
+  </main>
+
+   <!-- Footer -->
+ <footer>
+  <div class="container">
+      <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
+      <div class="social">
+          <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
+          <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+      </div>
+  </div>
+  <div class="resumeLayout">
+    <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+  </div>
+</footer>
+
+
+<script>
+window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)}; 
+formbutton("create", {
+  action: "https://formspree.io/f/myyqqbez",
+  title: "How can we help?",
+  fields: [
+    { 
+      type: "email", 
+      label: "Email:", 
+      name: "email",
+      required: true,
+      placeholder: "your@email.com"
+    },
+    {
+      type: "textarea",
+      label: "Message:",
+      name: "message",
+      placeholder: "What's on your mind?",
+    },
+    { type: "submit" }      
+  ],
+  styles: {
+    title: {
+      backgroundColor: "gray"
+    },
+    button: {
+      backgroundColor: "gray"
+    }
+  }
+});
+
+
+
+// start of contentful script for blog posts
+// Contentful script for blog posts
+const client = contentful.createClient({
+  space: '0bgqp836ksuk', // Replace with your space ID
+  accessToken: '_G7_MesKlx03bEeelP7L10AhjcQQoEvxPnL5e2mVqYI' // Replace with your access token
+});
+
+// Function to fetch and display a full blog post in a modal
+function loadBlogPost(postId) {
+  client.getEntry(postId)
+    .then(entry => {
+      const blogContent = document.getElementById('blog-content');
+      if (!entry.fields) {
+        console.error('No fields found in the blog post:', entry);
+        blogContent.innerHTML = '<p>Blog post has no content.</p>';
+        return;
+      }
+
+      // Render the Rich Text 'body' field
+      let renderedBody = '';
+      if (entry.fields.body) {
+        renderedBody = documentToHtmlString(entry.fields.body);
+      } else {
+        console.error('No body found in the blog post:', entry);
+        renderedBody = '<p>Blog post body is missing.</p>';
+      }
+
+      // Check and display the image if it exists
+      let imageHtml = '';
+      if (entry.fields.image && entry.fields.image.fields.file) {
+        imageHtml = `<img src="${entry.fields.image.fields.file.url}" alt="${entry.fields.image.fields.title || 'Blog Image'}">`;
+      }
+
+      // Display the blog post in the modal
+      blogContent.innerHTML = `
+        <h1>${entry.fields.title}</h1>
+        <div>${renderedBody}</div>
+        ${imageHtml}
+      `;
+
+      // Open the modal
+      document.getElementById('blogModal').style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Error fetching full blog post:', error);
+      if (blogContent) {
+        blogContent.innerHTML = '<p>Error loading blog post.</p>';
+      }
+    });
+}
+
+// Close the modal functionality
+var modal = document.getElementById('blogModal');
+var span = document.getElementsByClassName('close')[0];
+
+span.onclick = function() {
+  modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// Fetching blog entries
+client.getEntries({
+  content_type: 'blogPage', 
+  order: '-fields.publishedAt', 
+  limit: 6
+})
+.then(entries => {
+  const blogList = document.querySelector('.blog-list');
+  blogList.innerHTML = '';
+
+  if (!entries.items || entries.items.length === 0) {
+    console.error('No blog entries found:', entries);
+    blogList.innerHTML = '<p>No blog posts available.</p>';
+    return;
+  }
+
+  // Loop through the retrieved entries
+  entries.items.forEach(entry => {
+    if (!entry.fields) {
+      console.error('No fields found in the entry:', entry);
+      return;
+    }
+
+    // Extract relevant fields
+    const { title, publishedAt } = entry.fields;
+
+    // Create a clickable blog post item
+    const blogPostItem = document.createElement('div');
+    blogPostItem.classList.add('blog-post-item');
+    blogPostItem.innerHTML = `
+      <h2>${title}</h2>
+      <p>${new Date(publishedAt).toLocaleDateString('en-US')}</p>
+    `;
+
+    // Event listener for loading full blog post
+    blogPostItem.addEventListener('click', () => {
+      loadBlogPost(entry.sys.id);
+    });
+
+    // Append the blog post item to the list
+    blogList.appendChild(blogPostItem);
+  });
+})
+.catch(error => {
+  console.error('Error fetching blog entries:', error);
+  document.querySelector('.blog-list').innerHTML = '<p>Error fetching blog posts.</p>';
+});
+
+// end of contentful script for blog posts
+
+
+  // Modal script for the contact form
+  var modal = document.getElementById("connectModal");
+  var btn = document.getElementById("connectButton");
+  var span = document.getElementsByClassName("close-button")[0];
+
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</body>
+</html>

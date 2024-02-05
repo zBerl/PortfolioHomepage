@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Zachary Berling Portfolio</title>
+    <meta name="description" content="Zachary Berling's professional web development portfolio">
+    <meta name="author" content="Zachary Berling">
+    <meta name="keywords" content="Web Developer, Portfolio, Zachary Berling">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./images/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+  
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+    <script src="https://kit.fontawesome.com/42ef7bde51.js" crossorigin="anonymous" defer></script>
+    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+  </head>
+  <div class="content-wrap">
+  <header class="topBar">
+    <div class="logo"><a href="./index.html"><img src="./images/LogoSmall.png" alt="Berling"></a></div>
+    
+<!-- Trigger Button for Modal -->
+<button id="connectButton" class="connect-buttonII">Let's Connect</button>
+
+<!-- Modal -->
+<div id="connectModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Contact Form</h2>
+    <!-- Form inside the modal -->
+    <form action="https://formspree.io/f/myyqqbez" method="post">
+      <input type="text" name="name" placeholder="Enter your name">
+      <input type="email" name="_replyto" placeholder="Enter your email">
+      <textarea name="message" placeholder="Write your message here"></textarea>
+      <!-- Hidden input to let Formspree know where to redirect after submission -->
+      <input type="hidden" name="_next" value="http://www.ZacharyBerling.com">
+      <button type="submit">Send Message</button>
+    </form>
+    
+  </div>
+</div>
+
+
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggler">
+      <div class="hamburger"><div></div></div>
+      <div class="menu">
+          <div>
+              <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./portfolio.html">Portfolio</a><li>
+                <li><a href="./resume.html">Resume</a></li>
+                <li><a href="./Contact.html">Contact</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</header>
+    <!-- Main Content -->
+    <main>
+<section>
+  <div id="start" class="profilePic section">
+      <img src="./images/FACELOGO.svg" alt="Profile Picture">
+  </div>
+  <div class="RippedPage">
+      <img src="./images/RippedPage.svg" alt="RippedPaperVisual">
+  </div>
+  <article class="welcome">
+      <div class="container">
+          <div class="row">
+              <div class="twelve columns">
+                  <h1 class="welcometext">Welcome to my <em>portfolio!</em></h1>
+                  <h2 class="welcomesubtext">I'm Zachary Berling, <em id="typed"></em></h2>
+              </div>
+          </div>
+      </div>
+  </article>
+</section>
+<section>
+  <div class="container">
+      <article>
+          <img class="handIndicator" src="./images/Pointer.svg" alt="pointer">
+          <p class="texthello">I'm a dedicated and innovative web developer specializing in Web Development. I bring a blend of technical expertise, creative design, and a deep understanding of user experience to every project.</p>
+      </article>
+  </div>
+</section>
+<section class="solid container subsection two-column">
+<div class="row">
+    <section class="six columns">
+        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+        <p>Soon I will hold an Associates In Web Development from Muskegon Community College and have honed my skills at VentureProz, a web development company I started.</p>
+    </section>
+    <section class="six columns">
+      <h3><i class="fas fa-briefcase"></i> Professional Journey</h3>
+      <p>My journey in web development began with learning from <a href="https://teamtreehouse.com/profiles/zacharyberling" target="_blank">TeamTreeHouse.com</a>. This experience ignited my passion for building seamless, efficient, and impactful web solutions.</p>
+    </section>    
+</div>
+</section>
+<section>
+<h1 class="centerme twelve columns">Technical Skills & Expertise</h1>
+<div class="centerCanvas">
+  <canvas id="myCanvas" width="600" height="800"></canvas>
+</div>
+</section>
+<section>
+<h1 class="centerme">Notable Achievements</h1>
+<div class="centerme solid container subsection">
+<div class="row">
+    <div class="twelve columns horizontal-images">
+        <img src="./images/PTKLogo.svg" alt="Phi Theta Kappa Honor Society">
+        <p>As of 02/04/2024 - Currently 4.0gpa at Muskegon Community College at 42 credits. Planning to maintain with completion of 62 credits specializing in web development Winter 2025.</p>
+    </div>
+</div>
+</div>
+</section>
+<section class="twelve columns">
+<article class="centerme">
+<h1>Subscribe to my newsletter</h1>
+<p>Get the latest news and articles to your inbox every month.</p>
+<form action="https://formspree.io/f/myyqqbez" method="POST">
+  <input type="email" name="_replyto" placeholder="Your email" required>
+  <button type="submit">Subscribe</button>
+</form>
+</article>
+</section>    
+</main>
+</div>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+        <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
+        <div class="social">
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
+            <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
+            <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+        </div>
+    </div>
+    <div class="resumeLayout">
+      <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+    </div>
+  </footer>
+ 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Canvas setup and animation
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+  
+      class Logo {
+          constructor(src, x, y, dx, dy, size) {
+              this.image = new Image();
+              this.image.src = src;
+              this.x = x;
+              this.y = y;
+              this.dx = dx;
+              this.dy = dy;
+              this.size = size;
+          }
+  
+          draw() {
+              ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+          }
+  
+          updatePosition() {
+              this.x += this.dx;
+              this.y += this.dy;
+  
+              if (this.x + this.size > canvas.width || this.x < 0) {
+                  this.dx = -this.dx;
+              }
+              if (this.y + this.size > canvas.height || this.y < 0) {
+                  this.dy = -this.dy;
+              }
+          }
+      }
+  
+      var logosData = [
+          { src: './images/html.png', x: 50, y: 50, dx: 1, dy: 2 },
+          { src: './images/css.jpg', x: 100, y: 100, dx: -1, dy: -2 },
+          { src: './images/JS.png', x: 150, y: 150, dx: 2, dy: 1 },
+          { src: './images/react.png', x: 200, y: 200, dx: -2, dy: -1 }
+      ];
+  
+      var logos = logosData.map(data => new Logo(data.src, data.x, data.y, data.dx, data.dy, 50));
+  
+      function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          logos.forEach(logo => {
+              logo.draw();
+              logo.updatePosition();
+          });
+      }
+  
+      function animate() {
+          requestAnimationFrame(animate);
+          draw();
+      }
+  
+      animate();
+  
+      // Prevent the canvas from scrolling the page on touchmove
+      canvas.addEventListener('touchmove', function(e) {
+          e.preventDefault();
+      });
+  
+      // Initialize Typed.js
+      if (typeof Typed !== 'undefined') {
+          new Typed('#typed', {
+              strings: ["a Dev", "a Designer", "a Creative"],
+              typeSpeed: 60,
+              backSpeed: 50,
+              loop: true
+          });
+      } else {
+          console.error('Typed.js is not loaded');
+      }
+  
+      // Handle menu link clicks
+      const links = document.querySelectorAll('nav ul li a');
+      const toggler = document.querySelector('.menu-wrap .toggler');
+      links.forEach(link => {
+          link.addEventListener('click', () => {
+              toggler.checked = false;
+          });
+      });
+  
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('animated');
+              }
+          });
+      }, { threshold: 0.1 });
+  
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+          observer.observe(section);
+      });
+  
+      // Modal functionality
+      var modal = document.getElementById("connectModal");
+      var btn = document.getElementById("connectButton");
+      var span = document.getElementsByClassName("close-button")[0];
+  
+      btn.onclick = function() {
+          modal.style.display = "block";
+      }
+  
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+  
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+  
+      // Formspree functionality
+      window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
+      formbutton("create", {
+          action: "https://formspree.io/f/myyqqbez",
+          title: "How can we help?",
+          fields: [
+              { 
+                  type: "email", 
+                  label: "Email:", 
+                  name: "email",
+                  required: true,
+                  placeholder: "your@email.com"
+              },
+              {
+                  type: "textarea",
+                  label: "Message:",
+                  name: "message",
+                  placeholder: "What's on your mind?",
+              },
+              { type: "submit" }      
+          ],
+          styles: {
+              title: { backgroundColor: "gray" },
+              button: { backgroundColor: "gray" }
+          }
+      });
+  });
+  </script>
+</html>

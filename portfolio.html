@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zachary Berling Portfolio</title>
+    <meta name="description" content="Zachary Berling's professional web development portfolio">
+    <meta name="author" content="Zachary Berling">
+    <link rel="icon" type="image/png" href="./images/favicon.ico">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- JavaScript -->
+    <script src="https://kit.fontawesome.com/42ef7bde51.js" crossorigin="anonymous"></script>
+    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="three columns logo">
+                    <a href="./index.html"><img src="./images/LogoSmall.png" alt="Berling"></a>
+                </div>
+                <div class="nine columns menu-wrap">
+                    <input type="checkbox" class="toggler">
+                    <div class="hamburger"><div></div></div>
+                    <div class="menu">
+                        <div>
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li><a href="./about.html">About</a></li>
+                                <li><a href="./portfolio.html">Portfolio</a></li>
+                                <li><a href="./resume.html">Resume</a></li>
+                                <li><a href="./Contact.html">Contact</a></li>
+                                <li><a href="./blog.html">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="connectButton" class="connect-buttonII">Let's Connect</button>
+        <div id="connectModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Contact Form</h2>
+                <form action="https://formspree.io/f/myyqqbez" method="post">
+                    <input type="text" name="name" placeholder="Enter your name">
+                    <input type="email" name="_replyto" placeholder="Enter your email">
+                    <textarea name="message" placeholder="Write your message here"></textarea>
+                    <input type="hidden" name="_next" value="http://yourwebsite.com/thanks.html">
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div id="top"></div>
+
+    <section class="gallery">
+        <div class="container">
+            <h1>Portfolio</h1>
+            <ul>
+                <li>
+                    <a href="#item01">
+                        <img src="./images/PineHomLogo.png" alt="Item 01">
+                    </a>
+                </li>
+                <li>
+                    <a href="#item02">
+                        <img src="./images/HWHPLogo.png" alt="Item 02">
+                    </a>
+                </li>
+                <li>
+                    <a href="#item03">
+                        <img src="./images/BerlingPortfolioResumeLogo.png" alt="Item 03">
+                    </a>
+                </li>
+                <li>
+                    <a href="#item04">
+                        <img src="./images/MIGVALogo.png" alt="Item 04">
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Item view -->
+            <div id="item01" class="port">
+                <div class="row">
+                    <div class="eight columns description">
+                        <h1>PineHom</h1>
+                        <p>
+                            PineHom is a website that I created for Interior Design. This was a content management system using sanity.io and next.js. I used a headless CMS to create a blog. I also used next.js to create a dynamic website that is fast and responsive. Check it out at <a href="https://pinehom.com">PineHom.com</a>
+                        </p>
+                    </div>
+                    <div class="four columns">
+                        <img src="./images/PineHompage.png" alt="Item 01">
+                    </div>
+                </div>
+                <a href="#" class="close"></a>
+            </div>
+            <!-- ... -->
+            <div id="item02" class="port">
+                <div class="row">
+                    <div class="eight columns description">
+                        <h1>HomeWork Homepage</h1>
+                        <p>
+                            My HomeWork homepage is a website that I created for my homework for my web development class. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href="./Othersites/HomeworkHomePage/index.html">HomeWork Homepage</a>
+                        </p>
+                    </div>
+                    <div class="four columns">
+                        <img src="./images/HomeworkPage.png" alt="Item 02">
+                    </div>
+                </div>
+                <a href="#" class="close"></a>
+            </div>
+            <!-- ... -->
+            <div id="item03" class="port">
+                <div class="row">
+                    <div class="eight columns description">
+                        <h1>Portfolio Resume Site</h1>
+                        <p>
+                            This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href="./index.html">Portfolio Resume Site</a>
+                        </p>
+                    </div>
+                    <div class="four columns">
+                        <img src="./images/PortRespage.png" alt="Item 03">
+                    </div>
+                </div>
+                <a href="#" class="close"></a>
+            </div>
+            <!-- ... -->
+            <div id="item04" class="port">
+                <div class="row">
+                    <div class="eight columns description">
+                        <h1>MIGVA - Mental Illness Gun Violence Awareness</h1>
+                        <p>
+                            This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href="http://zachary.berling-cis258-f23.student-server.com/Skeleton-2.0.4/Othersites/Migva/index.html">Portfolio Resume Site</a>
+                        </p>
+                    </div>
+                    <div class="four columns">
+                        <img src="./images/MIGVApage.png" alt="Item 04">
+                    </div>
+                </div>
+                <a href="#" class="close"></a>
+            </div>
+        </div>
+    </section>
+
+ <!-- Footer -->
+ <footer>
+  <div class="container">
+      <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
+      <div class="social">
+          <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
+          <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+      </div>
+  </div>
+  <div class="resumeLayout">
+    <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+  </div>
+</footer>
+
+<script>
+window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)}; 
+formbutton("create", {
+  action: "https://formspree.io/f/myyqqbez",
+  title: "How can we help?",
+  fields: [
+    { 
+      type: "email", 
+      label: "Email:", 
+      name: "email",
+      required: true,
+      placeholder: "your@email.com"
+    },
+    {
+      type: "textarea",
+      label: "Message:",
+      name: "message",
+      placeholder: "What's on your mind?",
+    },
+    { type: "submit" }      
+  ],
+  styles: {
+    title: {
+      backgroundColor: "gray"
+    },
+    button: {
+      backgroundColor: "gray"
+    }
+  }
+});
+
+// modal
+var modal = document.getElementById("connectModal");
+var btn = document.getElementById("connectButton");
+var span = document.getElementsByClassName("close-button")[0];
+
+btn.onclick = function() {
+modal.style.display = "block";
+}
+
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+if (event.target == modal) {
+  modal.style.display = "none";
+}
+}
+
+ <!-- Include jQuery -->
+     $(document).ready(function() {
+         $('.gallery ul li a').click(function() {
+             var itemID = $(this).attr('href');
+             $('.gallery ul').addClass('item_open');
+             $(itemID).addClass('item_open');
+             return false;
+         });
+         $('.close').click(function() {
+             $('.port, .gallery ul').removeClass('item_open');
+             return false;
+         });
+     });
+ </script>
+</html>

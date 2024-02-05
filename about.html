@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zachary Berling Portfolio</title>
+  <meta name="description" content="Portfolio of Zachary Berling">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/42ef7bde51.js" crossorigin="anonymous"></script>
+  <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <link rel="icon" type="image/png" href="./images/favicon.ico">
+  <style>
+    .two-column-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+      padding-top: 10em;
+      padding-left: 1em;
+      margin-left: 4em;
+    }
+
+    .left-column, .right-column {
+      flex-basis: 48%; /* Adjust the width of each column */
+      /* Add additional styling as needed */
+    }
+
+    .profile-picture {
+      width: 50%; /* Adjust as necessary */
+      height: auto;
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+      .two-column-layout {
+        flex-direction: column;
+      }
+
+      .left-column, .right-column {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="about-page">
+  <header>
+    <div class="logo"><a href="./index.html"><img src="./images/LogoSmall.png" alt="Berling"></a></div>
+    
+    <!-- Trigger Button for Modal -->
+    <button id="connectButton" class="connect-buttonII">Let's Connect</button>
+
+    <!-- Modal -->
+    <div id="connectModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Contact Form</h2>
+
+        <!-- Form inside the modal -->
+        <form action="https://formspree.io/f/myyqqbez" method="post">
+          <input type="text" name="name" placeholder="Enter your name">
+          <input type="email" name="_replyto" placeholder="Enter your email">
+          <textarea name="message" placeholder="Write your message here"></textarea>
+          <!-- Hidden input to let Formspree know where to redirect after submission -->
+          <input type="hidden" name="_next" value="http://yourwebsite.com/thanks.html">
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggler">
+      <div class="hamburger"><div></div></div>
+      <div class="menu">
+        <div>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./portfolio.html">Portfolio</a><li>
+            <li><a href="./resume.html">Resume</a></li>
+            <li><a href="./Contact.html">Contact</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="two-column-layout">
+      <div class="left-column">
+        <!-- Content for the left column -->
+        <h1>Zachary Berling</h1>
+        <h2>Web Developer</h2>
+        <p>I am Zachary Berling, a passionate and creative Web Developer with a knack for building dynamic and responsive web solutions. With a strong foundation in both frontend and backend technologies, I bring ideas to life in the digital world. My journey in tech is driven by my love for learning and innovation, ensuring that I stay at the forefront of industry trends and best practices.</p>
+      </div>
+      <div class="right-column">
+        <!-- Content for the right column -->
+        <img src="./images/profilepic.jpeg" alt="Zachary Berling" class="profile-picture">
+      </div>
+    </div>
+  </main>
+   <!-- Footer -->
+ <footer>
+  <div class="container">
+      <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
+      <div class="social">
+          <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
+          <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+      </div>
+  </div>
+  <div class="resumeLayout">
+    <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+  </div>
+</footer>
+
+<script>
+window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)}; 
+formbutton("create", {
+  action: "https://formspree.io/f/myyqqbez",
+  title: "How can we help?",
+  fields: [
+    { 
+      type: "email", 
+      label: "Email:", 
+      name: "email",
+      required: true,
+      placeholder: "your@email.com"
+    },
+    {
+      type: "textarea",
+      label: "Message:",
+      name: "message",
+      placeholder: "What's on your mind?",
+    },
+    { type: "submit" }      
+  ],
+  styles: {
+    title: {
+      backgroundColor: "gray"
+    },
+    button: {
+      backgroundColor: "gray"
+    }
+  }
+});
+
+
+// Modal
+
+var modal = document.getElementById("connectModal");
+var btn = document.getElementById("connectButton");
+var span = document.getElementsByClassName("close-button")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>
+
