@@ -10,8 +10,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
@@ -24,6 +22,83 @@
     <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <style>
+        .gallery {
+            padding-top: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            width: calc(25% - 20px);
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .portfolio-modal.active {
+            display: flex;
+        }
+        .portfolio-modal img {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .portfolio-modal .description {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: calc(50% - 20px);
+            }
+            .portfolio-modal img {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: calc(100% - 20px);
+            }
+            .portfolio-modal img {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -66,96 +141,29 @@
         </div>
     </header>
 
-    <div id="top"></div>
-
     <section class="gallery">
-        <div class="container">
-            <h1>Portfolio</h1>
-            <ul>
-                <li>
-                    <a href="#item01">
-                        <img src="./images/PineHomLogo.png" alt="Item 01">
-                    </a>
-                </li>
-                <li>
-                    <a href="#item02">
-                        <img src="./images/HWHPLogo.png" alt="Item 02">
-                    </a>
-                </li>
-                <li>
-                    <a href="#item03">
-                        <img src="./images/BerlingPortfolioResumeLogo.png" alt="Item 03">
-                    </a>
-                </li>
-                <li>
-                    <a href="#item04">
-                        <img src="./images/MIGVALogo.png" alt="Item 04">
-                    </a>
-                </li>
-            </ul>
-
-            <!-- Item view -->
-            <div id="item01" class="port">
-                <div class="row">
-                    <div class="eight columns description">
-                        <h1>PineHom</h1>
-                        <p>
-                            PineHom is a website that I created for Interior Design. This was a content management system using sanity.io and next.js. I used a headless CMS to create a blog. I also used next.js to create a dynamic website that is fast and responsive. Check it out at <a href="https://pinehom.com">PineHom.com</a>
-                        </p>
-                    </div>
-                    <div class="four columns">
-                        <img src="./images/PineHompage.png" alt="Item 01">
-                    </div>
-                </div>
-                <a href="#" class="close"></a>
-            </div>
-            <!-- ... -->
-            <div id="item02" class="port">
-                <div class="row">
-                    <div class="eight columns description">
-                        <h1>HomeWork Homepage</h1>
-                        <p>
-                            My HomeWork homepage is a website that I created for my homework for my web development class. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href="./Othersites/HomeworkHomePage/index.html">HomeWork Homepage</a>
-                        </p>
-                    </div>
-                    <div class="four columns">
-                        <img src="./images/HomeworkPage.png" alt="Item 02">
-                    </div>
-                </div>
-                <a href="#" class="close"></a>
-            </div>
-            <!-- ... -->
-            <div id="item03" class="port">
-                <div class="row">
-                    <div class="eight columns description">
-                        <h1>Portfolio Resume Site</h1>
-                        <p>
-                            This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href="./index.html">Portfolio Resume Site</a>
-                        </p>
-                    </div>
-                    <div class="four columns">
-                        <img src="./images/PortRespage.png" alt="Item 03">
-                    </div>
-                </div>
-                <a href="#" class="close"></a>
-            </div>
-            <!-- ... -->
-            <div id="item04" class="port">
-                <div class="row">
-                    <div class="eight columns description">
-                        <h1>MIGVA - Mental Illness Gun Violence Awareness</h1>
-                        <p>
-                            This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href="http://zachary.berling-cis258-f23.student-server.com/Skeleton-2.0.4/Othersites/Migva/index.html">Portfolio Resume Site</a>
-                        </p>
-                    </div>
-                    <div class="four columns">
-                        <img src="./images/MIGVApage.png" alt="Item 04">
-                    </div>
-                </div>
-                <a href="#" class="close"></a>
-            </div>
+        <div class="gallery-item" data-title="PineHom" data-description="PineHom is a website that I created for Interior Design. This was a content management system using sanity.io and next.js. I used a headless CMS to create a blog. I also used next.js to create a dynamic website that is fast and responsive. Check it out at <a href='https://pinehom.com'>PineHom.com</a>" data-image="./images/PineHompage.png">
+            <img src="./images/PineHomLogo.png" alt="Item 01">
+        </div>
+        <div class="gallery-item" data-title="HomeWork Homepage" data-description="My HomeWork homepage is a website that I created for my homework for my web development class. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='./Othersites/HomeworkHomePage/index.html'>HomeWork Homepage</a>" data-image="./images/HomeworkPage.png">
+            <img src="./images/HWHPLogo.png" alt="Item 02">
+        </div>
+        <div class="gallery-item" data-title="Portfolio Resume Site" data-description="This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='./index.html'>Portfolio Resume Site</a>" data-image="./images/PortRespage.png">
+            <img src="./images/BerlingPortfolioResumeLogo.png" alt="Item 03">
+        </div>
+        <div class="gallery-item" data-title="MIGVA - Mental Illness Gun Violence Awareness" data-description="This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='http://zachary.berling-cis258-f23.student-server.com/Skeleton-2.0.4/Othersites/Migva/index.html'>MIGVA Site</a>" data-image="./images/MIGVApage.png">
+            <img src="./images/MIGVALogo.png" alt="Item 04">
         </div>
     </section>
+
+    <div class="portfolio-modal" id="portfolio-modal">
+        <span class="close-modal">&times;</span>
+        <img src="" alt="Project Image" id="modal-image">
+        <div class="description">
+            <h1 id="modal-title"></h1>
+            <p id="modal-description"></p>
+        </div>
+    </div>
 
  <!-- Footer -->
  <footer>
@@ -173,67 +181,79 @@
 </footer>
 
 <script>
-window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)}; 
+window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments) };
 formbutton("create", {
-  action: "https://formspree.io/f/myyqqbez",
-  title: "How can we help?",
-  fields: [
-    { 
-      type: "email", 
-      label: "Email:", 
-      name: "email",
-      required: true,
-      placeholder: "your@email.com"
-    },
-    {
-      type: "textarea",
-      label: "Message:",
-      name: "message",
-      placeholder: "What's on your mind?",
-    },
-    { type: "submit" }      
-  ],
-  styles: {
-    title: {
-      backgroundColor: "gray"
-    },
-    button: {
-      backgroundColor: "gray"
+    action: "https://formspree.io/f/myyqqbez",
+    title: "How can we help?",
+    fields: [
+        { 
+            type: "email", 
+            label: "Email:", 
+            name: "email",
+            required: true,
+            placeholder: "your@email.com"
+        },
+        {
+            type: "textarea",
+            label: "Message:",
+            name: "message",
+            placeholder: "What's on your mind?",
+        },
+        { type: "submit" }      
+    ],
+    styles: {
+        title: {
+            backgroundColor: "gray"
+        },
+        button: {
+            backgroundColor: "gray"
+        }
     }
-  }
 });
 
-// modal
+// Modal functionality
 var modal = document.getElementById("connectModal");
 var btn = document.getElementById("connectButton");
 var span = document.getElementsByClassName("close-button")[0];
 
 btn.onclick = function() {
-modal.style.display = "block";
+    modal.style.display = "block";
 }
 
 span.onclick = function() {
-modal.style.display = "none";
+    modal.style.display = "none";
 }
 
 window.onclick = function(event) {
-if (event.target == modal) {
-  modal.style.display = "none";
-}
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
- <!-- Include jQuery -->
-     $(document).ready(function() {
-         $('.gallery ul li a').click(function() {
-             var itemID = $(this).attr('href');
-             $('.gallery ul').addClass('item_open');
-             $(itemID).addClass('item_open');
-             return false;
-         });
-         $('.close').click(function() {
-             $('.port, .gallery ul').removeClass('item_open');
-             return false;
-         });
-     });
- </script>
+// Portfolio modal functionality
+$(document).ready(function() {
+    $('.gallery-item').click(function() {
+        var title = $(this).data('title');
+        var description = $(this).data('description');
+        var image = $(this).data('image');
+
+        $('#modal-title').text(title);
+        $('#modal-description').html(description);
+        $('#modal-image').attr('src', image);
+
+        $('#portfolio-modal').addClass('active');
+    });
+
+    $('.close-modal').click(function() {
+        $('#portfolio-modal').removeClass('active');
+    });
+
+    $(window).click(function(event) {
+        if ($(event.target).is('#portfolio-modal')) {
+            $('#portfolio-modal').removeClass('active');
+        }
+    });
+});
+</script>
+</body>
 </html>
