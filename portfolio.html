@@ -142,11 +142,8 @@
     </header>
 
     <section class="gallery">
-        <div class="gallery-item" data-title="PineHom" data-description="PineHom is a website that I created for Interior Design. This was a content management system using sanity.io and next.js. I used a headless CMS to create a blog. I also used next.js to create a dynamic website that is fast and responsive. Check it out at <a href='https://pinehom.com'>PineHom.com</a>" data-image="./images/PineHompage.png">
-            <img src="./images/PineHomLogo.png" alt="Item 01">
-        </div>
-        <div class="gallery-item" data-title="HomeWork Homepage" data-description="My HomeWork homepage is a website that I created for my homework for my web development class. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='https://homework-homepage.vercel.app/'>HomeWork Homepage</a>" data-image="./images/HomeworkPage.png">
-            <img src="./images/HWHPLogo.png" alt="Item 02">
+        <div class="gallery-item" data-title="PromptEasy" data-description="PromptEasy is a teleprompter application that I designed and developed. This project focuses on creating a more efficient and enjoyable teleprompter experience. I incorporated various modes to assist with reflection and make the experience more enjoyable. Check it out at <a href='https://prompteasy.vercel.app'>PromptEasy</a>" data-image="./images/PromptEasy.png">
+            <img src="./images/PromptEasyIcon.png" alt="Item 05">
         </div>
         <div class="gallery-item" data-title="Portfolio Resume Site" data-description="This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='http://www.zachberling.com'>Portfolio Resume Site</a>" data-image="./images/PortRespage.png">
             <img src="./images/BerlingPortfolioResumeLogo.png" alt="Item 03">
@@ -154,6 +151,16 @@
         <div class="gallery-item" data-title="MIGVA - Mental Illness Gun Violence Awareness" data-description="This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='https://migva.vercel.app'>MIGVA Site</a>" data-image="./images/MIGVApage.png">
             <img src="./images/MIGVALogo.png" alt="Item 04">
         </div>
+        <div class="gallery-item" data-title="HomeWork Homepage" data-description="My HomeWork homepage is a website that I created for my homework for my web development class. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='https://homework-homepage.vercel.app/'>HomeWork Homepage</a>" data-image="./images/HomeworkPage.png">
+            <img src="./images/HWHPLogo.png" alt="Item 02">
+        </div>
+        <div class="gallery-item" data-title="PineHom" data-description="PineHom is a website that I created for Interior Design. This was a content management system using sanity.io and next.js. I used a headless CMS to create a blog. I also used next.js to create a dynamic website that is fast and responsive. Check it out at <a href='https://pinehom.com'>PineHom.com</a>" data-image="./images/PineHompage.png">
+            <img src="./images/PineHomLogo.png" alt="Item 01">
+        </div>
+        
+       
+        
+       
     </section>
 
     <div class="portfolio-modal" id="portfolio-modal">
@@ -165,95 +172,95 @@
         </div>
     </div>
 
- <!-- Footer -->
- <footer>
-  <div class="container">
-      <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
-      <div class="social">
-          <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
-          <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
-          <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
-      </div>
-  </div>
-  <div class="resumeLayout">
-    <a href="./resume/resume.pdf" download class="button">Download Resume</a>
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
+            <div class="social">
+                <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
+                <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+            </div>
+        </div>
+        <div class="resumeLayout">
+            <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+        </div>
+    </footer>
 
-<script>
-window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments) };
-formbutton("create", {
-    action: "https://formspree.io/f/myyqqbez",
-    title: "How can we help?",
-    fields: [
-        { 
-            type: "email", 
-            label: "Email:", 
-            name: "email",
-            required: true,
-            placeholder: "your@email.com"
-        },
-        {
-            type: "textarea",
-            label: "Message:",
-            name: "message",
-            placeholder: "What's on your mind?",
-        },
-        { type: "submit" }      
-    ],
-    styles: {
-        title: {
-            backgroundColor: "gray"
-        },
-        button: {
-            backgroundColor: "gray"
+    <script>
+        window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments) };
+        formbutton("create", {
+            action: "https://formspree.io/f/myyqqbez",
+            title: "How can we help?",
+            fields: [
+                { 
+                    type: "email", 
+                    label: "Email:", 
+                    name: "email",
+                    required: true,
+                    placeholder: "your@email.com"
+                },
+                {
+                    type: "textarea",
+                    label: "Message:",
+                    name: "message",
+                    placeholder: "What's on your mind?",
+                },
+                { type: "submit" }      
+            ],
+            styles: {
+                title: {
+                    backgroundColor: "gray"
+                },
+                button: {
+                    backgroundColor: "gray"
+                }
+            }
+        });
+
+        // Modal functionality
+        var modal = document.getElementById("connectModal");
+        var btn = document.getElementById("connectButton");
+        var span = document.getElementsByClassName("close-button")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
         }
-    }
-});
 
-// Modal functionality
-var modal = document.getElementById("connectModal");
-var btn = document.getElementById("connectButton");
-var span = document.getElementsByClassName("close-button")[0];
-
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-// Portfolio modal functionality
-$(document).ready(function() {
-    $('.gallery-item').click(function() {
-        var title = $(this).data('title');
-        var description = $(this).data('description');
-        var image = $(this).data('image');
-
-        $('#modal-title').text(title);
-        $('#modal-description').html(description);
-        $('#modal-image').attr('src', image);
-
-        $('#portfolio-modal').addClass('active');
-    });
-
-    $('.close-modal').click(function() {
-        $('#portfolio-modal').removeClass('active');
-    });
-
-    $(window).click(function(event) {
-        if ($(event.target).is('#portfolio-modal')) {
-            $('#portfolio-modal').removeClass('active');
+        span.onclick = function() {
+            modal.style.display = "none";
         }
-    });
-});
-</script>
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Portfolio modal functionality
+        $(document).ready(function() {
+            $('.gallery-item').click(function() {
+                var title = $(this).data('title');
+                var description = $(this).data('description');
+                var image = $(this).data('image');
+
+                $('#modal-title').text(title);
+                $('#modal-description').html(description);
+                $('#modal-image').attr('src', image);
+
+                $('#portfolio-modal').addClass('active');
+            });
+
+            $('.close-modal').click(function() {
+                $('#portfolio-modal').removeClass('active');
+            });
+
+            $(window).click(function(event) {
+                if ($(event.target).is('#portfolio-modal')) {
+                    $('#portfolio-modal').removeClass('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
