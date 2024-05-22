@@ -1,266 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Zachary Berling Portfolio</title>
-    <meta name="description" content="Zachary Berling's professional web development portfolio">
-    <meta name="author" content="Zachary Berling">
-    <link rel="icon" type="image/png" href="./images/favicon.ico">
+  <meta charset="utf-8">
+  <title>Zachary Berling Portfolio</title>
+  <meta name="description" content="Zachary Berling's professional web development portfolio">
+  <meta name="author" content="Zachary Berling">
+  <meta name="keywords" content="Web Developer, Portfolio, Zachary Berling">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS for Animations -->
+  <style>
+    @keyframes blurInMove {
+      0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateX(-100%);
+      }
+     
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+      }
+    }
 
-    <!-- JavaScript -->
-    <script src="https://kit.fontawesome.com/42ef7bde51.js" crossorigin="anonymous"></script>
-    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    .handIndicator {
+      opacity: 0;
+      transform: translateX(-100%); /* Start off-screen */
+    }
 
-    <style>
-        .gallery {
-            padding-top: 100px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            width: calc(25% - 20px);
-            cursor: pointer;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        .portfolio-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            overflow: auto;
-            padding: 20px;
-            text-align: center;
-        }
-        .portfolio-modal.active {
-            display: flex;
-        }
-        .portfolio-modal img {
-            max-width: 80%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .portfolio-modal .description {
-            color: white;
-            margin-bottom: 20px;
-        }
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
+    .handIndicator.fade-in {
+      animation: blurInMove 2s ease-in-out forwards;
+    }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .gallery-item {
-                width: calc(50% - 20px);
-            }
-            .portfolio-modal img {
-                max-width: 90%;
-            }
-        }
+    .profilePic img {
+      opacity: 0; /* Start hidden */
+      transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+    }
 
-        @media (max-width: 480px) {
-            .gallery-item {
-                width: calc(100% - 20px);
-            }
-            .portfolio-modal img {
-                max-width: 100%;
-            }
-        }
-    </style>
+    .profilePic img.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="three columns logo">
-                    <a href="./index.html"><img src="./images/LogoSmall.png" alt="Berling"></a>
-                </div>
-                <div class="nine columns menu-wrap">
-                    <input type="checkbox" class="toggler">
-                    <div class="hamburger"><div></div></div>
-                    <div class="menu">
-                        <div>
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="./about.html">About</a></li>
-                                <li><a href="./portfolio.html">Portfolio</a></li>
-                                <li><a href="./resume.html">Resume</a></li>
-                                <li><a href="./Contact.html">Contact</a></li>
-                                <li><a href="./blog.html">Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="content-wrap">
+    <header class="topBar">
+      <div class="logo">
+        <a href="./index.html">
+          <img src="./images/LogoSmall.png" alt="Berling" loading="lazy">
+        </a>
+      </div>
+      <button id="connectButton" class="connect-buttonII">Let's Connect</button>
+      <div id="connectModal" class="modal">
+        <div class="modal-content" data-aos="fade-up">
+          <span class="close-button">&times;</span>
+          <h2>Contact Form</h2>
+          <form action="https://formspree.io/f/myyqqbez" method="post">
+            <input type="text" name="name" placeholder="Enter your name">
+            <input type="email" name="_replyto" placeholder="Enter your email">
+            <textarea name="message" placeholder="Write your message here"></textarea>
+            <input type="hidden" name="_next" value="http://www.ZacharyBerling.com">
+            <button type="submit">Send Message</button>
+          </form>
         </div>
-        <button id="connectButton" class="connect-buttonII">Let's Connect</button>
-        <div id="connectModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Contact Form</h2>
-                <form action="https://formspree.io/f/myyqqbez" method="post">
-                    <input type="text" name="name" placeholder="Enter your name">
-                    <input type="email" name="_replyto" placeholder="Enter your email">
-                    <textarea name="message" placeholder="Write your message here"></textarea>
-                    <input type="hidden" name="_next" value="http://yourwebsite.com/thanks.html">
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
+      </div>
+      <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger"><div></div></div>
+        <div class="menu">
+          <div>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./portfolio.html">Portfolio</a></li>
+              <li><a href="./resume.html">Resume</a></li>
+              <li><a href="./Contact.html">Contact</a></li>
+              <li><a href="./blog.html">Blog</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </header>
-
-    <section class="gallery">
-        <div class="gallery-item" data-title="PromptEasy" data-description="PromptEasy is a teleprompter application that I designed and developed. This project focuses on creating a more efficient and enjoyable teleprompter experience. I incorporated various modes to assist with reflection and make the experience more enjoyable. Check it out at <a href='https://prompteasy.vercel.app'>PromptEasy</a>" data-image="./images/Prompteasy.png">
-            <img src="./images/PromptEasyIcon.png" alt="Item 05">
+    <main>
+      <!-- Profile Picture and Welcome Section -->
+      <section data-aos="fade-up">
+        <div id="start" class="profilePic section">
+          <img id="profilePic" src="./images/FACELOGO.svg" alt="Profile Picture" loading="lazy" onerror="this.src='./images/FACELOGO.png'; console.error('Failed to load FACELOGO.svg, using fallback image.');">
         </div>
-        <div class="gallery-item" data-title="Portfolio Resume Site" data-description="This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='http://www.zachberling.com'>Portfolio Resume Site</a>" data-image="./images/PortRespage.png">
-            <img src="./images/BerlingPortfolioResumeLogo.png" alt="Item 03">
+        <div class="RippedPage">
+          <img src="./images/RippedPage.svg" alt="RippedPaperVisual" loading="lazy">
         </div>
-        <div class="gallery-item" data-title="MIGVA - Mental Illness Gun Violence Awareness" data-description="This is a website that I created for my portfolio. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='https://migva.vercel.app'>MIGVA Site</a>" data-image="./images/MIGVApage.png">
-            <img src="./images/MIGVALogo.png" alt="Item 04">
-        </div>
-        <div class="gallery-item" data-title="HomeWork Homepage" data-description="My HomeWork homepage is a website that I created for my homework for my web development class. I used HTML, CSS, and JavaScript to create this website. I used a lot of flexbox to create the layout of the website. Check it out at <a href='https://homework-homepage.vercel.app/'>HomeWork Homepage</a>" data-image="./images/HomeworkPage.png">
-            <img src="./images/HWHPLogo.png" alt="Item 02">
-        </div>
-        <div class="gallery-item" data-title="PineHom" data-description="PineHom is a website that I created for Interior Design. This was a content management system using sanity.io and next.js. I used a headless CMS to create a blog. I also used next.js to create a dynamic website that is fast and responsive. Check it out at <a href='https://pinehom.com'>PineHom.com</a>" data-image="./images/PineHompage.png">
-            <img src="./images/PineHomLogo.png" alt="Item 01">
-        </div>
-        
-       
-        
-       
-    </section>
-
-    <div class="portfolio-modal" id="portfolio-modal">
-        <span class="close-modal">&times;</span>
-        <img src="" alt="Project Image" id="modal-image">
-        <div class="description">
-            <h1 id="modal-title"></h1>
-            <p id="modal-description"></p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
-            <div class="social">
-                <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
-                <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
-                <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+        <article class="welcome">
+          <div class="container">
+            <div class="row">
+              <div class="twelve columns">
+                <h1 class="welcometext">Welcome to my <em>portfolio!</em></h1>
+                <h2 class="welcomesubtext">I'm Zachary Berling, <em id="typed"></em></h2>
+              </div>
             </div>
+          </div>
+        </article>
+      </section>
+      
+      <!-- Introduction Section -->
+      <section data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+          <article>
+            <img class="handIndicator" src="./images/Pointer.svg" alt="pointer">
+            <p class="texthello">I'm a dedicated and innovative web developer specializing in Web Development. I bring a blend of technical expertise, creative design, and a deep understanding of user experience to every project.</p>
+          </article>
         </div>
-        <div class="resumeLayout">
-            <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+      </section>
+      
+      <!-- Education and Professional Journey Section -->
+      <section class="solid container subsection two-column" data-aos="fade-up" data-aos-delay="400">
+        <div class="row">
+          <section class="six columns">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <p>Soon I will hold an Associates In Web Development from Muskegon Community College and have honed my skills at VentureProz, a web development company I started.</p>
+          </section>
+          <section class="six columns">
+            <h3><i class="fas fa-briefcase"></i> Professional Journey</h3>
+            <p>My journey in web development began with learning from <a href="https://teamtreehouse.com/profiles/zacharyberling" target="_blank">TeamTreeHouse.com</a>. This experience ignited my passion for building seamless, efficient, and impactful web solutions.</p>
+          </section>    
         </div>
+      </section>
+      
+      <!-- Technical Skills & Expertise Section -->
+      <section data-aos="fade-up" data-aos-delay="600">
+        <h1 class="centerme twelve columns">Technical Skills & Expertise</h1>
+        <div class="centerCanvas">
+          <canvas id="myCanvas" width="600" height="800"></canvas>
+        </div>
+      </section>
+      
+      <!-- Notable Achievements Section -->
+      <section data-aos="fade-up" data-aos-delay="800">
+        <h1 class="centerme">Notable Achievements</h1>
+        <div class="centerme solid container subsection">
+          <div class="row">
+            <div class="twelve columns horizontal-images">
+              <img src="./images/PTKLogo.svg" alt="Phi Theta Kappa Honor Society">
+              <p> 4.0 GPA at Muskegon Community College</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Certifications Section -->
+      <section data-aos="fade-up" data-aos-delay="1000">
+        <h1 class="centerme">Certifications</h1>
+        <div class="centerme solid container subsection">
+          <div class="row">
+            <div class="twelve columns">
+              <ul>
+                <li><a href="https://app.hubspot.com/academy/achievements/2ybjjzrk/en/1/zachary-berling/digital-advertising" target="_blank">HubSpot - Digital Advertising</a></li>
+                <li><a href="https://skillshop.exceedlms.com/student/award/JffzoNo6V2JNGBgRAt6ZUhgK" target="_blank">Google Skillshop - Google Ads</a></li>
+                <li><a href="https://app.hubspot.com/academy/achievements/spy9g6vh/en/1/zach-berling/inbound-marketing" target="_blank">HubSpot - Inbound Marketing</a></li>
+                <li><a href="https://apif.stukent.com/certifications/v1/a077e3c4-7aa6-4ee2-8bfc-1b96e3905bc5/d9ea0a33-3789-48d2-93e4-1461ff1752e6" target="_blank">Stukent - Digital Marketing</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Letter of Recommendation Section -->
+      <section data-aos="fade-up" data-aos-delay="1200">
+        <h1 class="centerme">Letter of Recommendation</h1>
+        <div class="centerme solid container subsection">
+          <div class="row">
+            <div class="twelve columns">
+              <a href="./images/PTKRecommendation.pdf" target="_blank">
+                <img src="./images/PTKLogo.svg" alt="PTK Logo" style="max-width: 150px; display: block; margin: 0 auto;">
+                <p style="text-align: center;">Phi Theta Kappa - Letter of Recommendation</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Newsletter Subscription Section -->
+      <section class="twelve columns" data-aos="fade-up" data-aos-delay="1400">
+        <article class="centerme">
+          <h1>Subscribe to my newsletter</h1>
+          <p>Get the latest news and articles to your inbox every month.</p>
+          <form action="https://formspree.io/f/myyqqbez" method="POST">
+            <input type="email" name="_replyto" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 <em>Zachary Berling</em>. All rights reserved.</p>
+        <div class="social">
+          <a href="#" class="social-icon facebook"><i class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social-icon instagram"><i class="fab fa-instagram-square"></i></a>
+          <a href="#" class="social-icon twitter"><i class="fab fa-twitter-square"></i></a>
+        </div>
+      </div>
+      <div class="resumeLayout">
+        <a href="./resume/resume.pdf" download class="button">Download Resume</a>
+      </div>
     </footer>
+  </div>
 
-    <script>
-        window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments) };
-        formbutton("create", {
-            action: "https://formspree.io/f/myyqqbez",
-            title: "How can we help?",
-            fields: [
-                { 
-                    type: "email", 
-                    label: "Email:", 
-                    name: "email",
-                    required: true,
-                    placeholder: "your@email.com"
-                },
-                {
-                    type: "textarea",
-                    label: "Message:",
-                    name: "message",
-                    placeholder: "What's on your mind?",
-                },
-                { type: "submit" }      
-            ],
-            styles: {
-                title: {
-                    backgroundColor: "gray"
-                },
-                button: {
-                    backgroundColor: "gray"
-                }
-            }
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+  <script src="https://kit.fontawesome.com/42ef7bde51.js" crossorigin="anonymous" defer></script>
+  <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // AOS Initialization
+      try {
+        console.log("Initializing AOS...");
+        AOS.init({
+          duration: 1000, // Animation duration
+          once: false,    // Whether animation should happen only once
+          mirror: true    // Whether elements should animate out while scrolling past them
         });
-
-        // Modal functionality
+        console.log("AOS initialized successfully.");
+      } catch (error) {
+        console.error("Error initializing AOS:", error);
+      }
+  
+      // Typed.js Initialization
+      try {
+        console.log("Initializing Typed.js...");
+        if (typeof Typed !== 'undefined') {
+          new Typed('#typed', {
+            strings: ["a Dev", "a Designer", "a Creative"],
+            typeSpeed: 60,
+            backSpeed: 50,
+            loop: true
+          });
+          console.log("Typed.js initialized successfully.");
+        } else {
+          throw new Error('Typed.js is not loaded');
+        }
+      } catch (error) {
+        console.error("Error initializing Typed.js:", error);
+      }
+  
+      // Canvas Setup and Animation
+      try {
+        console.log("Setting up canvas and animations...");
+        var canvas = document.getElementById("myCanvas");
+        if (canvas) {
+          var ctx = canvas.getContext("2d");
+  
+          class Logo {
+            constructor(src, x, y, dx, dy, size) {
+              this.image = new Image();
+              this.image.src = src;
+              this.x = x;
+              this.y = y;
+              this.dx = dx;
+              this.dy = dy;
+              this.size = size;
+            }
+  
+            draw() {
+              ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+            }
+  
+            updatePosition() {
+              this.x += this.dx;
+              this.y += this.dy;
+  
+              if (this.x + this.size > canvas.width || this.x < 0) {
+                this.dx = -this.dx;
+              }
+              if (this.y + this.size > canvas.height || this.y < 0) {
+                this.dy = -this.dy;
+              }
+            }
+          }
+  
+          var logosData = [
+            { src: './images/html.png', x: 50, y: 50, dx: 1, dy: 2, size: 100 },
+            { src: './images/css.jpg', x: 100, y: 100, dx: -1, dy: -2, size: 100 },
+            { src: './images/JS.png', x: 150, y: 150, dx: 2, dy: 1, size: 100 },
+            { src: './images/react.png', x: 200, y: 200, dx: -2, dy: -1, size: 100 }
+          ];
+  
+          var logos = logosData.map(data => new Logo(data.src, data.x, data.y, data.dx, data.dy, data.size));
+  
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            logos.forEach(logo => {
+              logo.draw();
+              logo.updatePosition();
+            });
+          }
+  
+          function animate() {
+            requestAnimationFrame(animate);
+            draw();
+          }
+  
+          animate();
+  
+          // Prevent the canvas from scrolling the page on touchmove
+          canvas.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+          });
+  
+          console.log("Canvas and animations set up successfully.");
+        } else {
+          console.warn("Canvas element not found.");
+        }
+      } catch (error) {
+        console.error("Error setting up canvas and animations:", error);
+      }
+  
+      // Modal Functionality
+      try {
+        console.log("Setting up modal functionality...");
         var modal = document.getElementById("connectModal");
         var btn = document.getElementById("connectButton");
         var span = document.getElementsByClassName("close-button")[0];
-
-        btn.onclick = function() {
+  
+        if (btn) {
+          btn.onclick = function() {
             modal.style.display = "block";
+            console.log("Connect modal opened.");
+          };
+          console.log("Connect button click handler added successfully.");
+        } else {
+          throw new Error('Connect button not found');
         }
-
-        span.onclick = function() {
+  
+        if (span) {
+          span.onclick = function() {
             modal.style.display = "none";
+            console.log("Connect modal closed.");
+          };
+          console.log("Close button click handler added successfully.");
+        } else {
+          throw new Error('Close button not found');
         }
-
+  
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Portfolio modal functionality
-        $(document).ready(function() {
-            $('.gallery-item').click(function() {
-                var title = $(this).data('title');
-                var description = $(this).data('description');
-                var image = $(this).data('image');
-
-                $('#modal-title').text(title);
-                $('#modal-description').html(description);
-                $('#modal-image').attr('src', image);
-
-                $('#portfolio-modal').addClass('active');
-            });
-
-            $('.close-modal').click(function() {
-                $('#portfolio-modal').removeClass('active');
-            });
-
-            $(window).click(function(event) {
-                if ($(event.target).is('#portfolio-modal')) {
-                    $('#portfolio-modal').removeClass('active');
-                }
-            });
+          if (event.target == modal) {
+            modal.style.display = "none";
+            console.log("Connect modal closed by clicking outside.");
+          }
+        };
+  
+        console.log("Modal functionality set up successfully.");
+      } catch (error) {
+        console.error("Error setting up modal functionality:", error);
+      }
+  
+      // Formspree Functionality
+      try {
+        console.log("Setting up Formspree functionality...");
+        window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments) };
+        formbutton("create", {
+          action: "https://formspree.io/f/myyqqbez",
+          title: "How can we help?",
+          fields: [
+            { 
+              type: "email", 
+              label: "Email:", 
+              name: "email",
+              required: true,
+              placeholder: "your@email.com"
+            },
+            {
+              type: "textarea",
+              label: "Message:",
+              name: "message",
+              placeholder: "What's on your mind?",
+            },
+            { type: "submit" }      
+          ],
+          styles: {
+            title: { backgroundColor: "gray" },
+            button: { backgroundColor: "gray" }
+          }
         });
-    </script>
+        console.log("Formspree form created successfully.");
+      } catch (error) {
+        console.error("Error setting up Formspree functionality:", error);
+      }
+  
+      // Intersection Observer for HandIndicator Animation
+      try {
+        console.log("Setting up Intersection Observer for handIndicator...");
+        const handIndicator = document.querySelector('.handIndicator');
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              handIndicator.classList.add('fade-in');
+              observer.unobserve(entry.target); // Unobserve after animation triggers
+              console.log("HandIndicator animation triggered.");
+            }
+          });
+        }, { threshold: 0.1 });
+  
+        if (handIndicator) {
+          observer.observe(handIndicator);
+          console.log("Intersection Observer for handIndicator set up successfully.");
+        } else {
+          throw new Error('handIndicator element not found');
+        }
+      } catch (error) {
+        console.error("Error setting up Intersection Observer for handIndicator:", error);
+      }
+  
+      // Ensure profile picture fades in on load
+      try {
+        console.log("Setting up profile picture fade-in animation...");
+        const profilePic = document.getElementById("profilePic");
+        if (profilePic) {
+          profilePic.onload = () => {
+            profilePic.classList.add("fade-in");
+            console.log("Profile picture loaded and animation applied.");
+          };
+          profilePic.onerror = () => {
+            console.error("Failed to load profile picture.");
+          };
+        } else {
+          throw new Error('Profile picture element not found');
+        }
+      } catch (error) {
+        console.error("Error setting up profile picture animation:", error);
+      }
+    });
+  </script>
 </body>
 </html>
